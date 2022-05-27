@@ -3,6 +3,9 @@ import nodemailer, { TransportOptions } from 'nodemailer';
 import Mail from "nodemailer/lib/mailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 export class MailtrapMailProvider implements IMailProvider {
     private transporter: Mail;
 

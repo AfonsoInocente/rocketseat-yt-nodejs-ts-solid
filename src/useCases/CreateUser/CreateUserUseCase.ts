@@ -3,6 +3,9 @@ import { IMailProvider } from "../../providers/IMailProvider";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { ICreateUserRequestDTO } from "./CreateUserDTO";
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 export class CreateUserUseCase {
     constructor(
         private usersRepository: IUsersRepository,
