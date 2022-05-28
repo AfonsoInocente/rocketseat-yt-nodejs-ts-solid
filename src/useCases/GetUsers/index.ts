@@ -1,10 +1,10 @@
-import { PostgresUsersRepository } from "../../repositories/implementations/PostgresUsersRespository";
+import Database from "../../config/database";
 import { GetUsersUseCase } from "./GetUsersUseCase";
 import { GetUsersController } from "./GetUsersController";
 
-const postgresUsersResponsitory = new PostgresUsersRepository();
+const databaseRepository = new Database();
 
-const getUsersUseCase = new GetUsersUseCase(postgresUsersResponsitory);
+const getUsersUseCase = new GetUsersUseCase(databaseRepository);
 
 const getUsersController = new GetUsersController(getUsersUseCase);
 

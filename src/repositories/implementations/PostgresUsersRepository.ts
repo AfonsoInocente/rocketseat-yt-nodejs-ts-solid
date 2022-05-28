@@ -14,7 +14,7 @@ export class PostgresUsersRepository implements IUsersRepository {
         return this.users[this.users.length - 1];
     }
 
-    async findAll(): Promise<User[] | []> {
+    async findAll(): Promise<User[]> {
         return this.users;
     }
 
