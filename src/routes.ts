@@ -12,4 +12,8 @@ router.get('/users', (_, res) => {
     return getUsersController.handle(res);
 });
 
+// router.get('/users/find', (req, res) => {
+//     return getUsersController.handle(res);
+// });
+
 export { router }

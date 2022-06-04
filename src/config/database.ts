@@ -1,2 +1,2 @@
-import { PostgresUsersRepository } from "../repositories/implementations/PostgresUsersRepository";
-export default PostgresUsersRepository;
+import { MongoUsersRepository } from "../repositories/implementations/MongoUsersRepository";
+export default MongoUsersRepository;

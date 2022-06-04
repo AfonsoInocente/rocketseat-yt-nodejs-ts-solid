@@ -13,7 +13,7 @@ export class CreateUserUseCase {
     ) {}
 
     async execute(data: ICreateUserRequestDTO) {
-        const findUser = await this.usersRepository.findByEmail(data.email);
+        const findUser = await this.usersRepository.findOne({ email: data.email });
 
         if (findUser) {
             throw new Error('User already exists.');
@@ -23,19 +23,21 @@ export class CreateUserUseCase {
 
         const newUser = await this.usersRepository.save(user);
 
-        // await this.mailProvider.sendMail({
-        //     to: {
-        //         name: data.name,
-        //         email: data.email
-        //     },
-        //     from: {
-        //         name: process.env.TEAM_NAME,
-        //         email: process.env.TEAM_EMAIL
-        //     },
-        //     subject: 'Seja bem-vindo ao app',
-        //     body: '<p>Você já pode fazer login em nossa plataforma.</p>'
-        // })
+        await this.mailProvider.sendMail({
+            to: {
+                name: data.name,
+                email: data.email
+            },
+            from: {
+                name: process.env.TEAM_NAME,
+                email: process.env.TEAM_EMAIL
+            },
+            subject: 'Seja bem-vindo ao app',
+            body: '<p>Você já pode fazer login em nossa plataforma.</p>'
+        })
 
         return newUser;
+
+        return {} as User;
     }
 }

@@ -1,15 +1,14 @@
-import { uuid } from "uuidv4";
+import { ObjectId } from "mongodb";
 
 export class User {
-    public readonly id: string;
-
+    public readonly _id: ObjectId;
     public name: string;
     public email: string;
     public password: string;
 
-    constructor(props: Omit<User, 'id'>, id?: string) {
-        if (!id) {
-            this.id = uuid();
+    constructor(props: Omit<User, '_id'>, _id?: string) {
+        if (!_id) {
+            this._id = new ObjectId();
         }
 
         Object.assign(this, props);
